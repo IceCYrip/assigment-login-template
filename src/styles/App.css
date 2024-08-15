@@ -1,5 +1,5 @@
 .wrapper {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
 
   background-color: whitesmoke;
@@ -26,6 +26,7 @@
 
 .formWrapper > h1 {
   text-align: center;
+  margin-top: 0;
 }
 
 .register-label {

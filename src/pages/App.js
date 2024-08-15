@@ -20,7 +20,7 @@ const App = () => {
   const checkValidations = (data) => {
     const isValidUsername = validator.isEmail(data.username)
     const isValidPassword =
-      validator.isAlphanumeric(data.password) && data.password?.length == 8
+      validator.isAlphanumeric(data.password) && data.password?.length >= 8
 
     if (!isValidUsername) {
       setError('username', {
@@ -82,6 +82,7 @@ const App = () => {
             // required
             label="Password"
             variant="outlined"
+            type="password"
             {...register('password')}
             error={!!errors.password}
             helperText={errors?.password?.message ?? ''}

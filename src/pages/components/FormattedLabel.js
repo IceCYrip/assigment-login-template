@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 const FormattedLabel = ({ id, lang }) => {
   const [formattedLabel, setFormattedLabel] = useState('')
   const labels = {
-    en: {
+    EN: {
       fullName: 'Name',
       username: 'Username',
       language: 'Language',
       mobileNumber: 'Mobile Number',
     },
-    de: {
+    DE: {
       fullName: 'Name',
       username: 'Nutzername',
       language: 'Sprache',
