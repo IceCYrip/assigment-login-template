@@ -1,6 +1,8 @@
+## Frontend Application (React.Js)
+
 **Please run the project with the command: `npm start`**
 
-## Login
+### Login
 
 The login functionality allows users to access the application using their credentials.
 
@@ -11,7 +13,7 @@ The login functionality allows users to access the application using their crede
   - Must contain only alphanumeric characters (`a-z`, `A-Z`, `0-9`).
   - Minimum length of 8 characters is enforced.
 
-## Register
+### Register
 
 The registration process allows new users to create an account.
 
@@ -33,11 +35,11 @@ The registration process allows new users to create an account.
 - **Verification Email:**
   - Upon successful registration, a verification email is sent to the user's registered email address.
 
-## User Module
+### User Module
 
 When a user successfully logs in, the application displays their profile information in the language chosen during registration.
 
-## Admin Module
+### Admin Module
 
 The admin module provides administrative functionalities.
 
