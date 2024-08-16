@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+## Login
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The login functionality allows users to access the application using their credentials.
 
-## Available Scripts
+- **Username:**
+  - Must be a valid email address.
+  - Validation ensures a correct email format.
+- **Password:**
+  - Must contain only alphanumeric characters (`a-z`, `A-Z`, `0-9`).
+  - Minimum length of 8 characters is enforced.
 
-In the project directory, you can run:
+## Register
 
-### `npm start`
+The registration process allows new users to create an account.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Full Name:**
+  - Users must enter their full name.
+- **Username:**
+  - Must be a valid email address.
+  - Validation ensures a correct email format.
+- **Password:**
+  - Must contain only alphanumeric characters (`a-z`, `A-Z`, `0-9`).
+  - Minimum length of 8 characters is enforced.
+- **Confirm Password:**
+  - Must match the entered password for verification.
+- **Language:**
+  - Users can choose their preferred language from a selection (`EN` or `DE`).
+- **Mobile Number:**
+  - Optional field.
+  - If provided, validation ensures a valid mobile number format (specific format details can be added here).
+- **Verification Email:**
+  - Upon successful registration, a verification email is sent to the user's registered email address.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## User Module
 
-### `npm test`
+When a user successfully logs in, the application displays their profile information in the language chosen during registration.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Admin Module
 
-### `npm run build`
+The admin module provides administrative functionalities.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Upon successful login, an admin user can view a table listing all registered users.
+- Admins can toggle the active status of user accounts, granting or revoking access.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Note:** This documentation provides a high-level overview of the login, registration, user, and admin functionalities. Specific implementation details may vary and can be further elaborated upon in separate sections.
