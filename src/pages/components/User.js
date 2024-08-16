@@ -9,7 +9,7 @@ const User = ({ data }) => {
   }, [data])
 
   return (
-    <>
+    <div className="details-wrapper">
       <table>
         <tbody>
           {dataHeads?.map((objectKey, i) => (
@@ -24,7 +24,7 @@ const User = ({ data }) => {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   )
 }
 

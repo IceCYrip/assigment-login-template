@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/App.css'
-import { Button, Paper, TextField } from '@mui/material'
+import { Button, CircularProgress, Paper, TextField } from '@mui/material'
 
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -9,6 +9,7 @@ import axios from 'axios'
 import sweetAlert from 'sweetalert'
 
 const App = () => {
+  const [loader, setLoader] = useState(false)
   const navigate = useNavigate()
   const {
     register,
@@ -46,16 +47,19 @@ const App = () => {
 
   const login = (data) => {
     if (checkValidations(data)) {
+      setLoader(true)
       axios
         .post('http://localhost:5000/api/login', data)
         .then((res) => {
           sessionStorage.setItem('token', res.data.token)
           navigate('/details')
+          setLoader(false)
         })
         .catch((err) => {
           console.log(err)
           const error = err.response.data
 
+          setLoader(false)
           sweetAlert(
             error?.message ?? 'Oops...',
             error?.description ?? 'Something went wrong!',
@@ -71,7 +75,7 @@ const App = () => {
         <form className="formWrapper" onSubmit={handleSubmit(login)}>
           <h1>LOGIN</h1>
           <TextField
-            // required
+            required
             label="Username"
             variant="outlined"
             {...register('username')}
@@ -79,7 +83,7 @@ const App = () => {
             helperText={errors?.username?.message ?? ''}
           />
           <TextField
-            // required
+            required
             label="Password"
             variant="outlined"
             type="password"
@@ -89,8 +93,14 @@ const App = () => {
             FormHelperTextProps={{ style: { marginLeft: 0 } }} // Remove margin
           />
 
-          <Button variant="contained" type="submit" color="success">
-            Login
+          <Button
+            className="bttn"
+            disabled={loader}
+            variant="contained"
+            type="submit"
+            color="success"
+          >
+            {loader ? <CircularProgress color="success" size={20} /> : 'Login'}
           </Button>
           <div className="register-label">
             Don't have an account?

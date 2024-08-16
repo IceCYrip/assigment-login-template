@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/Register.css'
 import {
   Button,
+  CircularProgress,
   FormControl,
   FormHelperText,
   InputLabel,
@@ -18,7 +19,9 @@ import axios from 'axios'
 import sweetAlert from 'sweetalert'
 
 const Register = () => {
+  const [loader, setLoader] = useState(false)
   const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
@@ -96,22 +99,23 @@ const Register = () => {
     )
   }
 
-  const login = (data) => {
+  const registerUser = (data) => {
     if (checkValidations(data)) {
-      console.log('data: ', data)
+      setLoader(true)
       axios
         .post('http://localhost:5000/api/register', data)
         .then((res) => {
-          // sessionStorage.setItem('token', res.data.token)
-          // navigate('/details')
           if (res.data?.mailSent) {
             sweetAlert('Verification', res.data?.message, 'info')
+            navigate('/')
           }
+          setLoader(false)
         })
         .catch((err) => {
           console.log(err)
           const error = err.response.data
 
+          setLoader(false)
           sweetAlert(
             error?.message ?? 'Oops...',
             error?.description ?? 'Something went wrong!',
@@ -124,10 +128,12 @@ const Register = () => {
   return (
     <div className="wrapper">
       <Paper elevation={4} className="container">
-        <form className="registerFormWrapper" onSubmit={handleSubmit(login)}>
+        <form
+          className="registerFormWrapper"
+          onSubmit={handleSubmit(registerUser)}
+        >
           <h1>REGISTER</h1>
           <TextField
-            // required
             label="Name"
             variant="outlined"
             {...register('fullName')}
@@ -135,7 +141,6 @@ const Register = () => {
             helperText={errors?.fullName?.message ?? ''}
           />
           <TextField
-            // required
             label="Username"
             variant="outlined"
             {...register('username')}
@@ -143,17 +148,15 @@ const Register = () => {
             helperText={errors?.username?.message ?? ''}
           />
           <TextField
-            // required
             label="Password"
             variant="outlined"
             type="password"
             {...register('password')}
             error={!!errors.password}
             helperText={errors?.password?.message ?? ''}
-            FormHelperTextProps={{ style: { marginLeft: 0 } }} // Remove margin
+            FormHelperTextProps={{ style: { marginLeft: 0 } }}
           />
           <TextField
-            // required
             label="Confirm Password"
             variant="outlined"
             type="password"
@@ -194,8 +197,18 @@ const Register = () => {
             FormHelperTextProps={{ style: { marginLeft: 0 } }} // Remove margin
           />
 
-          <Button variant="contained" type="submit" color="success">
-            Create an account
+          <Button
+            className="bttn"
+            disabled={loader}
+            variant="contained"
+            type="submit"
+            color="success"
+          >
+            {loader ? (
+              <CircularProgress color="success" size={20} />
+            ) : (
+              'Create an account'
+            )}
           </Button>
           <div className="register-label">
             Already have an account?

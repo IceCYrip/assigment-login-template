@@ -37,3 +37,7 @@
   text-decoration: none;
   color: blue;
 }
+
+.bttn {
+  min-height: 40px;
+}

@@ -30,7 +30,7 @@ const Admin = ({ data, fetchDetailsFn }) => {
       })
   }
   return (
-    <div className="adminTable">
+    <div className="details-wrapper">
       <table>
         <tbody>
           <tr>
