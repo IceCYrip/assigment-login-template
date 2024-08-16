@@ -1,3 +1,5 @@
+**Please run the project with the command: `npm start`**
+
 ## Login
 
 The login functionality allows users to access the application using their credentials.
