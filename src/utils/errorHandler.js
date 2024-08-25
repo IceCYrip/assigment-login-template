@@ -1,4 +1,5 @@
 import React from 'react'
+import sweetAlert from 'sweetalert'
 
 const errorHandler = (err) => {
   console.log(err)
