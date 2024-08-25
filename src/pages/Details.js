@@ -17,7 +17,7 @@ const Details = () => {
 
   const fetchDetails = () => {
     axios
-      .get(`http://localhost:5000/api/getDetails`, {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/getDetails`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

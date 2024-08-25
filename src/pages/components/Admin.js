@@ -10,7 +10,7 @@ const Admin = ({ data, fetchDetailsFn }) => {
 
   const toggleActivation = (id) => {
     axios
-      .get(`http://localhost:5000/api/toggleActivation`, {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/toggleActivation`, {
         headers: { Authorization: `Bearer ${token}` },
         params: { id },
       })

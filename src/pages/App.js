@@ -49,17 +49,18 @@ const App = () => {
     if (checkValidations(data)) {
       setLoader(true)
       axios
-        .post('http://localhost:5000/api/login', data)
+        .post(`${process.env.REACT_APP_BACKEND_URL}/login`, data)
         .then((res) => {
-          sessionStorage.setItem('token', res.data.token)
-          navigate('/details')
           setLoader(false)
+          sessionStorage.setItem('token', res.data?.token)
+          navigate('/details')
         })
         .catch((err) => {
-          console.log(err)
-          const error = err.response.data
-
           setLoader(false)
+
+          console.log(err)
+          const error = err?.response?.data
+
           sweetAlert(
             error?.message ?? 'Oops...',
             error?.description ?? 'Something went wrong!',

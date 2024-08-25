@@ -103,7 +103,7 @@ const Register = () => {
     if (checkValidations(data)) {
       setLoader(true)
       axios
-        .post('http://localhost:5000/api/register', data)
+        .post(`${process.env.REACT_APP_BACKEND_URL}/register`, data)
         .then((res) => {
           if (res.data?.mailSent) {
             sweetAlert('Verification', res.data?.message, 'info')
